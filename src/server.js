@@ -4,6 +4,7 @@ const app = express()
 
 //= DEFININDO O TEMPLATE ENGINE ====================
 app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
 
 //= DEFININDO OS ARQUIVOS PÚBLICOS ====================
 app.use(express.static(path.join(__dirname, 'public')))
