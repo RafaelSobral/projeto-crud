@@ -1,6 +1,11 @@
 const express = require('express')
 const path = require('path')
+const db = require('./database/index')
+
 const app = express()
+
+//= CONEXÃO COM O BANCO DE DADOS MONGO ====================
+db.connect
 
 //= DEFININDO O TEMPLATE ENGINE ====================
 app.set('view engine', 'ejs')
