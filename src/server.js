@@ -1,11 +1,12 @@
 const express = require('express')
 const path = require('path')
 const db = require('./database/index')
+const routes = require('./routes')
 
 const app = express()
 
 //= CONEXÃO COM O BANCO DE DADOS MONGO ====================
-db.connect
+db.connect()
 
 //= DEFININDO O TEMPLATE ENGINE ====================
 app.set('view engine', 'ejs')
@@ -17,12 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 //= HABILITA SERVER PARA RECEBER DADOS VIA POST (formulário) ====================
 app.use(express.urlencoded({ extended: true }))
 
-//= DEFININDO ROTAS ====================
-app.get('/', (req, res) => {
-  res.render('index', {
-    title: 'Título Teste'
-  })
-})
+//= DEFININDO AS ROTAS ====================
+app.use('/', routes)
 
 //= ERRO 404 (not found) ====================
 app.use((req, res) => { // MIDDLEWARE
